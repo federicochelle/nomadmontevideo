@@ -1,0 +1,50 @@
+.how-it-works {
+  background-color: var(--color-bg);
+}
+
+.how-it-works__grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--space-6);
+}
+
+.how-it-works__card {
+  position: relative;
+  padding: var(--space-8);
+  border-radius: var(--radius-lg);
+  background-color: var(--color-surface);
+  border: 1px solid rgba(188, 204, 220, 0.55);
+  box-shadow: var(--shadow-sm);
+  overflow: hidden;
+}
+
+.how-it-works__card::before {
+  content: "";
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 4px;
+  background-color: var(--color-primary-700);
+}
+
+.how-it-works__number {
+  display: inline-block;
+  margin-bottom: var(--space-4);
+  font-size: var(--text-sm);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--color-primary-700);
+}
+
+.how-it-works__title {
+  margin-bottom: var(--space-3);
+}
+
+.how-it-works__text {
+  font-size: var(--text-base);
+}
+
+@media (max-width: 900px) {
+  .how-it-works__grid {
+    grid-template-columns: 1fr;
+  }
+}

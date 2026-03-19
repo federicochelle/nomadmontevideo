@@ -1,0 +1,523 @@
+/* =========================
+   1. RESET
+========================= */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+ul,
+ol,
+figure,
+blockquote {
+  margin: 0;
+}
+
+ul,
+ol {
+  list-style: none;
+  padding: 0;
+}
+
+img,
+picture,
+svg,
+video,
+canvas {
+  display: block;
+  max-width: 100%;
+}
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+button {
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* =========================
+   2. VARIABLES GLOBALES
+========================= */
+:root {
+  /* Colores principales */
+  --color-primary-900: #0f3d3e;
+  --color-primary-800: #145254;
+  --color-primary-700: #1b6a6d;
+  --color-primary-600: #248488;
+  --color-primary-500: #2fa2a7;
+
+  --color-accent-500: #d6b98c;
+  --color-accent-400: #e3ccb0;
+  --color-accent-300: #efe1cf;
+
+  --color-bg: #f7f4ee;
+  --color-surface: #ffffff;
+  --color-surface-alt: #f1ece4;
+
+  --color-text: #1f2933;
+  --color-text-soft: #52606d;
+  --color-text-muted: #7b8794;
+
+  --color-border: #d9e2ec;
+  --color-border-strong: #bcccdc;
+
+  --color-success: #1f8f5f;
+  --color-warning: #c58b15;
+  --color-danger: #c94b4b;
+
+  /* Tipografía */
+  --font-base: Arial, Helvetica, sans-serif;
+
+  --text-xs: 0.75rem; /* 12px */
+  --text-sm: 0.875rem; /* 14px */
+  --text-base: 1rem; /* 16px */
+  --text-md: 1.125rem; /* 18px */
+  --text-lg: 1.25rem; /* 20px */
+  --text-xl: 1.5rem; /* 24px */
+  --text-2xl: 2rem; /* 32px */
+  --text-3xl: 2.5rem; /* 40px */
+  --text-4xl: 3.5rem; /* 56px */
+
+  /* Line heights */
+  --leading-tight: 1.1;
+  --leading-snug: 1.25;
+  --leading-normal: 1.5;
+  --leading-relaxed: 1.7;
+
+  /* Espaciados */
+  --space-1: 0.25rem; /* 4px */
+  --space-2: 0.5rem; /* 8px */
+  --space-3: 0.75rem; /* 12px */
+  --space-4: 1rem; /* 16px */
+  --space-5: 1.25rem; /* 20px */
+  --space-6: 1.5rem; /* 24px */
+  --space-8: 2rem; /* 32px */
+  --space-10: 2.5rem; /* 40px */
+  --space-12: 3rem; /* 48px */
+  --space-16: 4rem; /* 64px */
+  --space-20: 5rem; /* 80px */
+  --space-24: 6rem; /* 96px */
+
+  /* Layout */
+  --container-sm: 720px;
+  --container-md: 960px;
+  --container-lg: 1120px;
+  --container-xl: 1240px;
+
+  --section-padding-y: clamp(4rem, 8vw, 7rem);
+  --section-padding-x: 1.25rem;
+
+  /* Bordes y sombras */
+  --radius-sm: 0.5rem;
+  --radius-md: 0.875rem;
+  --radius-lg: 1.25rem;
+  --radius-xl: 1.75rem;
+  --radius-pill: 999px;
+
+  --shadow-sm: 0 4px 14px rgba(15, 61, 62, 0.06);
+  --shadow-md: 0 10px 30px rgba(15, 61, 62, 0.1);
+  --shadow-lg: 0 18px 48px rgba(15, 61, 62, 0.12);
+
+  /* Transiciones */
+  --transition-fast: 0.2s ease;
+  --transition-base: 0.3s ease;
+}
+
+/* =========================
+   3. BASE
+========================= */
+body {
+  min-height: 100vh;
+  font-family: var(--font-base);
+  font-size: var(--text-base);
+  line-height: var(--leading-normal);
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background-color: var(--color-accent-400);
+  color: var(--color-primary-900);
+}
+
+/* =========================
+   4. TIPOGRAFÍA GLOBAL
+========================= */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: var(--color-text);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+h1 {
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  line-height: var(--leading-tight);
+}
+
+h2 {
+  font-size: clamp(2rem, 4vw, 3rem);
+  line-height: 1.15;
+}
+
+h3 {
+  font-size: clamp(1.35rem, 2.5vw, 1.8rem);
+  line-height: var(--leading-snug);
+}
+
+h4 {
+  font-size: clamp(1.1rem, 2vw, 1.35rem);
+  line-height: var(--leading-snug);
+}
+
+p {
+  font-size: var(--text-base);
+  line-height: var(--leading-relaxed);
+  color: var(--color-text-soft);
+}
+
+small {
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+}
+
+/* =========================
+   5. LAYOUT GLOBAL
+========================= */
+main {
+  display: block;
+}
+
+section {
+  padding: var(--section-padding-y) var(--section-padding-x);
+}
+
+.container {
+  width: min(100% - 2rem, var(--container-lg));
+  margin-inline: auto;
+}
+
+.container--sm {
+  width: min(100% - 2rem, var(--container-sm));
+  margin-inline: auto;
+}
+
+.container--md {
+  width: min(100% - 2rem, var(--container-md));
+  margin-inline: auto;
+}
+
+.container--xl {
+  width: min(100% - 2rem, var(--container-xl));
+  margin-inline: auto;
+}
+
+.section-header {
+  max-width: 700px;
+  margin-bottom: var(--space-12);
+}
+
+.section-kicker {
+  display: inline-block;
+  margin-bottom: var(--space-4);
+  font-size: var(--text-sm);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-primary-700);
+}
+
+.section-title {
+  margin-bottom: var(--space-4);
+}
+
+.section-text {
+  max-width: 60ch;
+  font-size: var(--text-md);
+}
+
+/* =========================
+   6. GRID / FLEX UTILITARIO
+========================= */
+.grid {
+  display: grid;
+  gap: var(--space-6);
+}
+
+.grid-2 {
+  display: grid;
+  gap: var(--space-6);
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.grid-3 {
+  display: grid;
+  gap: var(--space-6);
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.flex {
+  display: flex;
+}
+
+.flex-col {
+  display: flex;
+  flex-direction: column;
+}
+
+.items-center {
+  align-items: center;
+}
+
+.justify-between {
+  justify-content: space-between;
+}
+
+.gap-4 {
+  gap: var(--space-4);
+}
+
+.gap-6 {
+  gap: var(--space-6);
+}
+
+.gap-8 {
+  gap: var(--space-8);
+}
+
+/* =========================
+   7. COMPONENTES GLOBALES REUTILIZABLES
+========================= */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  min-height: 52px;
+  padding: 0.95rem 1.5rem;
+  border-radius: var(--radius-pill);
+  font-size: var(--text-base);
+  font-weight: 700;
+  line-height: 1;
+  transition: var(--transition-fast);
+  white-space: nowrap;
+}
+
+.btn--primary {
+  background-color: var(--color-primary-700);
+  color: #ffffff;
+  box-shadow: var(--shadow-sm);
+}
+
+.btn--primary:hover {
+  background-color: var(--color-primary-800);
+  transform: translateY(-1px);
+}
+
+.btn--secondary {
+  background-color: transparent;
+  color: var(--color-primary-700);
+  border: 1px solid var(--color-primary-700);
+}
+
+.btn--secondary:hover {
+  background-color: rgba(27, 106, 109, 0.06);
+}
+
+.btn--accent {
+  background-color: var(--color-accent-500);
+  color: var(--color-primary-900);
+}
+
+.btn--accent:hover {
+  filter: brightness(0.98);
+  transform: translateY(-1px);
+}
+
+.card {
+  background-color: var(--color-surface);
+  border: 1px solid rgba(188, 204, 220, 0.55);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+}
+
+.card__body {
+  padding: var(--space-8);
+}
+
+/* =========================
+   8. FORMULARIOS GLOBALES
+========================= */
+label {
+  display: block;
+  margin-bottom: var(--space-2);
+  font-size: var(--text-sm);
+  font-weight: 700;
+  color: var(--color-text);
+}
+
+input,
+textarea,
+select {
+  width: 100%;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background-color: var(--color-surface);
+  color: var(--color-text);
+  padding: 0.95rem 1rem;
+  outline: none;
+  transition:
+    border-color var(--transition-fast),
+    box-shadow var(--transition-fast);
+}
+
+textarea {
+  min-height: 140px;
+  resize: vertical;
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: var(--color-text-muted);
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  border-color: var(--color-primary-600);
+  box-shadow: 0 0 0 4px rgba(47, 162, 167, 0.12);
+}
+
+/* =========================
+   9. UTILIDADES BÁSICAS
+========================= */
+.text-center {
+  text-align: center;
+}
+
+.text-balance {
+  text-wrap: balance;
+}
+
+.surface {
+  background-color: var(--color-surface);
+}
+
+.surface-alt {
+  background-color: var(--color-surface-alt);
+}
+
+.rounded-lg {
+  border-radius: var(--radius-lg);
+}
+
+.shadow-sm {
+  box-shadow: var(--shadow-sm);
+}
+
+.shadow-md {
+  box-shadow: var(--shadow-md);
+}
+
+.mt-4 {
+  margin-top: var(--space-4);
+}
+
+.mt-6 {
+  margin-top: var(--space-6);
+}
+
+.mt-8 {
+  margin-top: var(--space-8);
+}
+
+.mb-4 {
+  margin-bottom: var(--space-4);
+}
+
+.mb-6 {
+  margin-bottom: var(--space-6);
+}
+
+.mb-8 {
+  margin-bottom: var(--space-8);
+}
+
+/* =========================
+   10. RESPONSIVE
+========================= */
+@media (max-width: 900px) {
+  .grid-3 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 768px) {
+  section {
+    padding-inline: 1rem;
+  }
+
+  .grid-2,
+  .grid-3 {
+    grid-template-columns: 1fr;
+  }
+
+  .section-header {
+    margin-bottom: var(--space-8);
+  }
+
+  .section-text {
+    font-size: var(--text-base);
+  }
+
+  .btn {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  body {
+    font-size: 15px;
+  }
+
+  .container,
+  .container--sm,
+  .container--md,
+  .container--xl {
+    width: min(100% - 1.25rem, var(--container-lg));
+  }
+}
