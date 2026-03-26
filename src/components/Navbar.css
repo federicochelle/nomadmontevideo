@@ -17,14 +17,12 @@
 
 /* LOGO */
 .navbar__logo {
-  font-weight: 700;
-  font-size: var(--text-md);
-  color: var(--color-primary-800);
-}
-.navbar__logo {
   display: flex;
   align-items: center;
   gap: 0.5rem;
+  font-weight: 700;
+  font-size: var(--text-md);
+  color: var(--color-primary-800);
 }
 
 .navbar__logo-img {
@@ -32,7 +30,8 @@
   width: auto;
   object-fit: contain;
 }
-/* NAV */
+
+/* NAV DESKTOP */
 .navbar__nav {
   display: flex;
   align-items: center;
@@ -54,48 +53,97 @@
   margin-left: var(--space-4);
 }
 
-/* TOGGLE (hamburguesa) */
+/* TOGGLE */
 .navbar__toggle {
   display: none;
-  flex-direction: column;
-  gap: 5px;
+  position: relative;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border: none;
+  background: transparent;
+  cursor: pointer;
 }
 
 .navbar__toggle span {
+  position: absolute;
+  left: 5px;
   width: 22px;
   height: 2px;
   background-color: var(--color-text);
+  transition:
+    transform 0.3s ease,
+    opacity 0.25s ease,
+    top 0.3s ease;
+}
+
+.navbar__toggle span:nth-child(1) {
+  top: 9px;
+}
+
+.navbar__toggle span:nth-child(2) {
+  top: 15px;
+}
+
+.navbar__toggle span:nth-child(3) {
+  top: 21px;
+}
+
+/* X */
+.navbar__toggle.is-open span:nth-child(1) {
+  top: 15px;
+  transform: rotate(45deg);
+}
+
+.navbar__toggle.is-open span:nth-child(2) {
+  opacity: 0;
+}
+
+.navbar__toggle.is-open span:nth-child(3) {
+  top: 15px;
+  transform: rotate(-45deg);
 }
 
 /* MOBILE */
 @media (max-width: 768px) {
-  .navbar__toggle {
-    display: flex;
+  .navbar {
+    background-color: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(10px);
   }
 
-.navbar {
-  background-color: rgba(255, 255, 255, 0.85);
-  backdrop-filter: blur(10px);
-}
+  .navbar__toggle {
+    display: block;
+  }
 
   .navbar__nav {
     position: absolute;
     top: 72px;
     left: 0;
     width: 100%;
-    background-color: var(--color-surface);
     flex-direction: column;
     align-items: center;
-    padding: var(--space-6);
     gap: var(--space-6);
+    padding: var(--space-6);
     border-bottom: 1px solid var(--color-border);
-background-color: rgba(255, 255, 255, 0.85);
-  backdrop-filter: blur(10px);
-    display: none;
+    background-color: rgba(255, 255, 255, 0.92);
+    backdrop-filter: blur(10px);
+
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-12px);
+    transition:
+      opacity 0.28s ease,
+      transform 0.28s ease,
+      visibility 0.28s ease;
+
+    pointer-events: none;
   }
 
   .navbar__nav.is-open {
-    display: flex;
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+    pointer-events: auto;
   }
 
   .navbar__cta {

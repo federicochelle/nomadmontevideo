@@ -61,14 +61,12 @@ function Navbar() {
         </nav>
 
         <button
-          className="navbar__toggle"
+          className={`navbar__toggle ${isOpen ? "is-open" : ""}`}
           onClick={toggleMenu}
-          aria-label="Abrir menú"
+          aria-label={isOpen ? "Cerrar menú" : "Abrir menú"}
           aria-expanded={isOpen}
           type="button"
         >
-          <span></span>
-          <span></span>
           <span></span>
           <span></span>
           <span></span>
