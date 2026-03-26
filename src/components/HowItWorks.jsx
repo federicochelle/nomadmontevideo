@@ -3,7 +3,7 @@ import stepsData from "../data/stepsData";
 
 function HowItWorks() {
   return (
-    <section className="how-it-works" id="como-funciona">
+    <section className="how-it-works surface" id="como-funciona">
       <div className="container">
         <div className="section-header">
           <span className="section-kicker">Cómo funciona</span>

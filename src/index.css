@@ -93,6 +93,8 @@ a {
   --color-warning: #c58b15;
   --color-danger: #c94b4b;
 
+  --color-black: black;
+
   /* Tipografía */
   --font-base: Arial, Helvetica, sans-serif;
 
@@ -132,7 +134,7 @@ a {
   --container-lg: 1120px;
   --container-xl: 1240px;
 
-  --section-padding-y: clamp(4rem, 8vw, 7rem);
+  --section-padding-y: clamp(3rem, 5vw, 3.5rem);
   --section-padding-x: 1.25rem;
 
   /* Bordes y sombras */
@@ -169,6 +171,7 @@ body {
   background-color: var(--color-accent-400);
   color: var(--color-primary-900);
 }
+
 
 /* =========================
    4. TIPOGRAFÍA GLOBAL
@@ -358,6 +361,16 @@ section {
   background-color: rgba(27, 106, 109, 0.06);
 }
 
+.btn--hero {
+  background-color:  rgba(0, 0, 0, 0.26);;
+  color: var(--color-border);
+  border: 1px solid var(--color-border);
+}
+
+.btn--hero:hover {
+  background-color: rgba(146, 146, 146, 0.06);
+}
+
 .btn--accent {
   background-color: var(--color-accent-500);
   color: var(--color-primary-900);
@@ -436,6 +449,7 @@ select:focus {
 .surface {
   background-color: var(--color-surface);
 }
+
 
 .surface-alt {
   background-color: var(--color-surface-alt);

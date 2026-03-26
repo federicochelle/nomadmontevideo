@@ -3,7 +3,7 @@ import servicesData from "../data/servicesData.jsx";
 
 function Services() {
   return (
-    <section className="services surface" id="servicios">
+    <section className="services" id="servicios">
       <div className="container">
         <div className="section-header">
           <span className="section-kicker">Servicios</span>
@@ -16,16 +16,17 @@ function Services() {
           </p>
         </div>
 
-        <div className="services__grid">
-          {servicesData.map((service) => (
-            <article className="card services__card" key={service.id}>
-              <div className="card__body">
-                <h3 className="services__card-title">{service.title}</h3>
-                <p className="services__card-text">{service.description}</p>
-              </div>
-            </article>
-          ))}
-        </div>
+       <div className="services__grid">
+  {servicesData.map((service) => (
+    <article className="card services__card" key={service.id}>
+      <div className="card__body">
+        <div className="services__card-icon">{service.icon}</div>
+        <h3 className="services__card-title">{service.title}</h3>
+        <p className="services__card-text">{service.description}</p>
+      </div>
+    </article>
+  ))}
+</div>
       </div>
     </section>
   );

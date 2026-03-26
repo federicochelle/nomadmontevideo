@@ -1,8 +1,17 @@
 import "./Hero.css";
+import heroImg from "../assets/rambla.webp";
 
 function Hero() {
   return (
     <section className="hero" id="inicio">
+      <div className="hero__bg">
+        <div
+          className="hero__bg-slide"
+          style={{ backgroundImage: `url(${heroImg})` }}
+        />
+        <div className="hero__overlay" />
+      </div>
+
       <div className="container">
         <div className="hero__content">
           <span className="hero__eyebrow">
@@ -23,7 +32,7 @@ function Hero() {
               Ver servicios
             </a>
 
-            <a href="#contacto" className="btn btn--secondary">
+            <a href="#contacto" className="btn btn--hero">
               Quiero asesoramiento
             </a>
           </div>

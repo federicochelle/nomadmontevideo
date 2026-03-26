@@ -1,5 +1,6 @@
 import { useState } from "react";
 import "./Contact.css";
+import { supabase } from "../lib/supabase";
 
 function Contact() {
   const [form, setForm] = useState({
@@ -8,17 +9,45 @@ function Contact() {
     message: "",
   });
 
+  const [loading, setLoading] = useState(false);
+  const [feedback, setFeedback] = useState("");
+
   const handleChange = (e) => {
-    setForm({
-      ...form,
+    setForm((prev) => ({
+      ...prev,
       [e.target.name]: e.target.value,
-    });
+    }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(form);
-    alert("Mensaje enviado (simulado)");
+    setLoading(true);
+    setFeedback("");
+
+    const { error } = await supabase.from("contact_leads").insert([
+      {
+        name: form.name,
+        email: form.email,
+        message: form.message,
+      },
+    ]);
+
+    if (error) {
+      console.error("CONTACT ERROR:", error);
+      setFeedback(`Error: ${error.message}`);
+      setLoading(false);
+      return;
+    }
+
+    setFeedback("Mensaje enviado correctamente");
+
+    setForm({
+      name: "",
+      email: "",
+      message: "",
+    });
+
+    setLoading(false);
   };
 
   return (
@@ -26,9 +55,7 @@ function Contact() {
       <div className="container container--sm">
         <div className="section-header text-center">
           <span className="section-kicker">Contacto</span>
-          <h2 className="section-title">
-            ¿Querés que gestionemos tu propiedad?
-          </h2>
+          <h2 className="section-title">Sumate a una gestión profesional.</h2>
         </div>
 
         <form className="contact__form" onSubmit={handleSubmit}>
@@ -64,8 +91,14 @@ function Contact() {
             />
           </div>
 
-          <button className="btn btn--primary">Enviar consulta</button>
+          <button className="btn btn--primary" disabled={loading}>
+            {loading ? "Enviando..." : "Enviar consulta"}
+          </button>
         </form>
+
+        {feedback && (
+          <p style={{ marginTop: "16px", textAlign: "center" }}>{feedback}</p>
+        )}
       </div>
     </section>
   );

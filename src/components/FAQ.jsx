@@ -10,7 +10,7 @@ function FAQ() {
   };
 
   return (
-    <section className="faq" id="faq">
+    <section className="faq surface" id="faq">
       <div className="container">
         <div className="section-header">
           <span className="section-kicker">Preguntas frecuentes</span>

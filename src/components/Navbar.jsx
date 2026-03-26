@@ -1,5 +1,6 @@
 import { useState } from "react";
 import "./Navbar.css";
+import logo from "../assets/logo.png"
 
 function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -15,9 +16,10 @@ function Navbar() {
   return (
     <header className="navbar">
       <div className="container navbar__inner">
-        {/* LOGO */}
+        
         <a href="#inicio" className="navbar__logo" onClick={closeMenu}>
-          Nomad Montevideo
+           <img src={logo} alt="Nomad Montevideo" className="navbar__logo-img" />
+          Nomad Managament
         </a>
 
         {/* NAV DESKTOP */}

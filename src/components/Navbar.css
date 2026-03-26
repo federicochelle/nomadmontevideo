@@ -1,10 +1,11 @@
 .navbar {
-  position: sticky;
+  position: fixed;
   top: 0;
+  left: 0;
+  width: 100%;
   z-index: 1000;
-  background-color: rgba(255, 255, 255, 0.85);
+  background-color: rgba(255, 255, 255, 0.65);
   backdrop-filter: blur(10px);
-  border-bottom: 1px solid var(--color-border);
 }
 
 .navbar__inner {
@@ -20,7 +21,17 @@
   font-size: var(--text-md);
   color: var(--color-primary-800);
 }
+.navbar__logo {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
 
+.navbar__logo-img {
+  height: 56px;
+  width: auto;
+  object-fit: contain;
+}
 /* NAV */
 .navbar__nav {
   display: flex;
